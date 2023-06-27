@@ -1,0 +1,15 @@
+name: HTML Validación
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby and install HTMLProofer
+      run: |
+       sudo apt-get -y install ruby-full
+       gem install --user-install html-proofer
+    - name: Check HTML
+      run: |
+       PATH="(ruby -e 'puts Gem.user_dir')/bin:$PATH"
+       htmlproofer ./ --allow-hash-href --check-html
