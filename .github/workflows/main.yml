@@ -11,5 +11,5 @@ jobs:
        gem install --user-install html-proofer
     - name: Check HTML
       run: |
-       PATH="(ruby -e 'puts Gem.user_dir')/bin:$PATH"
+       PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
        htmlproofer ./ --allow-hash-href --check-html
